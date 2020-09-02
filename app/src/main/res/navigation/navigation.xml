@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.kyawt.shimmertesting.view.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/kidsFragment"
+        android:name="com.kyawt.shimmertesting.view.ui.KidsFragment"
+        android:label="fragment_kids"
+        tools:layout="@layout/fragment_kids" />
+    <fragment
+        android:id="@+id/trailerFragment"
+        android:name="com.kyawt.shimmertesting.view.ui.TrailerFragment"
+        android:label="fragment_trailer"
+        tools:layout="@layout/fragment_trailer" />
+</navigation>

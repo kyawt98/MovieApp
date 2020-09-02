@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homeFragment"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
+        android:iconTint="@android:color/holo_red_dark"/>
+
+    <item android:id="@+id/trailerFragment"
+        android:title="Trailers"
+        android:icon="@drawable/ic_movie"
+        android:iconTint="@android:color/holo_red_dark"/>
+
+    <item android:id="@+id/kidsFragment"
+        android:title="Kids"
+        android:icon="@drawable/ic_child"
+        android:iconTint="@android:color/holo_red_dark"/>
+
+</menu>
