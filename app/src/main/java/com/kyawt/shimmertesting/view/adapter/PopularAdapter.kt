@@ -7,9 +7,10 @@ import com.kyawt.shimmertesting.service.model.movie.MovieResult
 import com.kyawt.shimmertesting.view.exts.viewBinding
 import com.kyawt.shimmertesting.view.viewholder.PopularViewHolder
 
-class PopularAdapter (var popularList: List<MovieResult> = emptyList()) : RecyclerView.Adapter<PopularViewHolder>(){
+class PopularAdapter (private val mClickListener: PopularViewHolder.ClickListener,
+    var popularList: List<MovieResult> = emptyList()) : RecyclerView.Adapter<PopularViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularViewHolder {
-        return PopularViewHolder(parent.context.viewBinding(R.layout.item_movie,parent))
+        return PopularViewHolder(parent.context.viewBinding(R.layout.item_movie,parent),mClickListener)
     }
 
     override fun onBindViewHolder(holder: PopularViewHolder, position: Int) {

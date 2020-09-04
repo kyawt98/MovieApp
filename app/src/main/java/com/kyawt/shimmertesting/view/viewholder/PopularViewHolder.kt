@@ -7,12 +7,21 @@ import com.kyawt.shimmertesting.service.model.movie.MovieResult
 import com.kyawt.shimmertesting.service.repository.ServiceProvider
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class PopularViewHolder(var v:View): RecyclerView.ViewHolder(v){
+class PopularViewHolder(var v:View ,
+private val mClickListener:ClickListener): RecyclerView.ViewHolder(v){
     fun bind(popular:MovieResult){
         val baseUrl = "https://image.tmdb.org/t/p/w500"
         val imgPath =popular.posterPath
         Glide.with(v)
             .load("$baseUrl$imgPath")
             .into(v.moviePoster)
+
+        v.rootView.setOnClickListener {
+            mClickListener.onClick(popular)
+        }
+    }
+
+    interface ClickListener{
+        fun onClick(popular:MovieResult)
     }
 }

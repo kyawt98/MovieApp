@@ -1,8 +1,11 @@
 package com.kyawt.shimmertesting.service.model.movie
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class MovieResult(
     @SerializedName("adult")
     val adult: Boolean,
@@ -32,4 +35,4 @@ data class MovieResult(
     val voteAverage: Double,
     @SerializedName("vote_count")
     val voteCount: Int
-)
+):Parcelable

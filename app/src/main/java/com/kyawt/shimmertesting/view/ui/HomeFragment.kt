@@ -1,19 +1,26 @@
 package com.kyawt.shimmertesting.view.ui
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kyawt.shimmertesting.R
+import com.kyawt.shimmertesting.service.model.movie.MovieResult
 import com.kyawt.shimmertesting.view.adapter.*
+import com.kyawt.shimmertesting.view.constant.Constant
+import com.kyawt.shimmertesting.view.utils.ShimmerUtils
+import com.kyawt.shimmertesting.view.viewholder.PopularViewHolder
 import com.kyawt.shimmertesting.viewmodel.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), PopularViewHolder.ClickListener {
 
     lateinit var popularViewModel: PopularViewModel
     lateinit var nowPlayingViewModel: NowPlayingViewModel
@@ -45,6 +52,16 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        shimmerLayout.shimmer = ShimmerUtils.getGrayShimmer(context!!)
+
+        // delay-auto-unveil
+        Handler().postDelayed({
+            shimmerLayout.unVeil()
+        }, 3000)
 
     }
 
@@ -63,7 +80,7 @@ class HomeFragment : Fragment() {
     private fun setupRecyclers() {
         recyclerPopular.apply {
             viewManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            popularAdapter = PopularAdapter()
+            popularAdapter = PopularAdapter(this@HomeFragment)
             this.adapter = popularAdapter
             this.layoutManager = viewManager
         }
@@ -136,5 +153,19 @@ class HomeFragment : Fragment() {
             topImageAdapter.updateList(result.results)
         })
     }
+
+    override fun onClick(popular: MovieResult) {
+        val bundle = Bundle()
+        bundle.putParcelable(Constant.movie_key,popular)
+        findNavController().navigate(R.id.action_homeFragment_to_movieDetailFragment,bundle,navOptions)
+    }
+
+        val navOptions = NavOptions.Builder()
+            .setEnterAnim(R.anim.nav_default_enter_anim)
+            .setExitAnim(R.anim.nav_default_exit_anim)
+            .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+            .setPopExitAnim(R.anim.nav_default_pop_exit_anim)
+            .build()
+
 
 }

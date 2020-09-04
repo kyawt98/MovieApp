@@ -23,11 +23,11 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-//            if (){
-//
-//            }else{
-//                bottomNav.visibility = View.VISIBLE
-//            }
+            if (destination.id == R.id.movieDetailFragment){
+                bottomNav.visibility = View.GONE
+            }else{
+                bottomNav.visibility = View.VISIBLE
+            }
         }
 
     }

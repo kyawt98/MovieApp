@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.kyawt.shimmertesting.view.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/kidsFragment"
         android:name="com.kyawt.shimmertesting.view.ui.KidsFragment"
@@ -20,4 +24,9 @@
         android:name="com.kyawt.shimmertesting.view.ui.TrailerFragment"
         android:label="fragment_trailer"
         tools:layout="@layout/fragment_trailer" />
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.kyawt.shimmertesting.view.ui.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail" />
 </navigation>

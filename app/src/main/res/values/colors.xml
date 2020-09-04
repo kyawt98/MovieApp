@@ -3,4 +3,7 @@
     <color name="colorPrimary">#99645D</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="shimmerBase0">#c2c2c2</color>
+    <color name="shimmerHighlight0">#ffffff</color>
+    <color name="shimmerHighlight1">#DFDEDE</color>
 </resources>
