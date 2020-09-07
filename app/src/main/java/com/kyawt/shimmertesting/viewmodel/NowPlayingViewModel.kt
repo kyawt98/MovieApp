@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kyawt.shimmertesting.service.model.movie.Movie
+import com.kyawt.shimmertesting.service.model.movie.MovieResult
 import com.kyawt.shimmertesting.service.repository.MovieRepository
 import kotlinx.coroutines.launch
 

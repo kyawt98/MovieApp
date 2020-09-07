@@ -16,11 +16,16 @@ import com.kyawt.shimmertesting.service.model.movie.MovieResult
 import com.kyawt.shimmertesting.view.adapter.*
 import com.kyawt.shimmertesting.view.constant.Constant
 import com.kyawt.shimmertesting.view.utils.ShimmerUtils
+import com.kyawt.shimmertesting.view.viewholder.NowPlayingViewHolder
 import com.kyawt.shimmertesting.view.viewholder.PopularViewHolder
+import com.kyawt.shimmertesting.view.viewholder.TopRatedViewHolder
+import com.kyawt.shimmertesting.view.viewholder.UpcomingViewHolder
 import com.kyawt.shimmertesting.viewmodel.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment(), PopularViewHolder.ClickListener {
+class HomeFragment : Fragment(), PopularViewHolder.ClickListener,
+    NowPlayingViewHolder.ClickListener, TopRatedViewHolder.ClickListener,
+    UpcomingViewHolder.ClickListener {
 
     lateinit var popularViewModel: PopularViewModel
     lateinit var nowPlayingViewModel: NowPlayingViewModel
@@ -86,7 +91,7 @@ class HomeFragment : Fragment(), PopularViewHolder.ClickListener {
 
         recyclerNowPlaying.apply {
             viewManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            nowPlayingAdapter = NowPlayingAdapter()
+            nowPlayingAdapter = NowPlayingAdapter(this@HomeFragment)
             this.adapter = nowPlayingAdapter
             this.layoutManager = viewManager
         }
@@ -100,14 +105,14 @@ class HomeFragment : Fragment(), PopularViewHolder.ClickListener {
 
         recyclerTopRated.apply {
             viewManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            topRatedAdapter = TopRatedAdapter()
+            topRatedAdapter = TopRatedAdapter(this@HomeFragment)
             this.adapter = topRatedAdapter
             this.layoutManager = viewManager
         }
 
         recyclerUpcoming.apply {
             viewManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            upcomingAdapter = UpcomingAdapter()
+            upcomingAdapter = UpcomingAdapter(this@HomeFragment)
             this.adapter = upcomingAdapter
             this.layoutManager = viewManager
         }
@@ -155,14 +160,48 @@ class HomeFragment : Fragment(), PopularViewHolder.ClickListener {
 
     override fun onClick(popular: MovieResult) {
         val bundle = Bundle()
-        bundle.putParcelable(Constant.movie_key,popular)
-        findNavController().navigate(R.id.action_homeFragment_to_movieDetailFragment,bundle,navOptions)
+        bundle.putParcelable(Constant.movie_key, popular)
+        findNavController().navigate(
+            R.id.action_homeFragment_to_movieDetailFragment,
+            bundle,
+            navOptions
+        )
     }
 
-        val navOptions = NavOptions.Builder()
-            .setEnterAnim(R.anim.nav_default_enter_anim)
-            .setExitAnim(R.anim.nav_default_exit_anim)
-            .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
-            .setPopExitAnim(R.anim.nav_default_pop_exit_anim)
-            .build()
+    val navOptions = NavOptions.Builder()
+        .setEnterAnim(R.anim.nav_default_enter_anim)
+        .setExitAnim(R.anim.nav_default_exit_anim)
+        .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
+        .setPopExitAnim(R.anim.nav_default_pop_exit_anim)
+        .build()
+
+    override fun onClickNowPlaying(nowPlaying: MovieResult) {
+        val bundle = Bundle()
+        bundle.putParcelable(Constant.movie_key, nowPlaying)
+        findNavController().navigate(
+            R.id.action_homeFragment_to_movieDetailFragment,
+            bundle,
+            navOptions
+        )
+    }
+
+    override fun onClickTopRated(topRated: MovieResult) {
+        val bundle = Bundle()
+        bundle.putParcelable(Constant.movie_key, topRated)
+        findNavController().navigate(
+            R.id.action_homeFragment_to_movieDetailFragment,
+            bundle,
+            navOptions
+        )
+    }
+
+    override fun onClickUpcoming(upComing: MovieResult) {
+        val bundle = Bundle()
+        bundle.putParcelable(Constant.movie_key, upComing)
+        findNavController().navigate(
+            R.id.action_homeFragment_to_movieDetailFragment,
+            bundle,
+            navOptions
+        )
+    }
 }

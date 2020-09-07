@@ -7,9 +7,10 @@ import com.kyawt.shimmertesting.service.model.movie.MovieResult
 import com.kyawt.shimmertesting.view.exts.viewBinding
 import com.kyawt.shimmertesting.view.viewholder.TopRatedViewHolder
 
-class TopRatedAdapter(var topRatedList: List<MovieResult> = emptyList()) : RecyclerView.Adapter<TopRatedViewHolder>() {
+class TopRatedAdapter(private var mClickListener: TopRatedViewHolder.ClickListener,
+    var topRatedList: List<MovieResult> = emptyList()) : RecyclerView.Adapter<TopRatedViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopRatedViewHolder {
-        return TopRatedViewHolder(parent.context.viewBinding(R.layout.item_movie,parent))
+        return TopRatedViewHolder(parent.context.viewBinding(R.layout.item_movie,parent), mClickListener)
     }
 
     override fun onBindViewHolder(holder: TopRatedViewHolder, position: Int) {

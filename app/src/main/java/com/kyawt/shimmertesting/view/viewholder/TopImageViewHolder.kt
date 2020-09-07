@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_top.view.*
 class TopImageViewHolder(var v:View) : RecyclerView.ViewHolder(v) {
     fun bind(top : MovieResult){
         val baseUrl = Constant.MOVIE_PATH
-        val imgPath =top.posterPath
+        val imgPath =top.backdropPath
         Glide.with(v)
             .load("$baseUrl$imgPath")
             .into(v.imgTop)
