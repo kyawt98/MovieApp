@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kyawt.shimmertesting.service.model.detail.MovieDetail
 import com.kyawt.shimmertesting.service.model.movie.MovieResult
+import com.kyawt.shimmertesting.service.model.video.Result
+import com.kyawt.shimmertesting.service.model.video.Video
 import com.kyawt.shimmertesting.service.repository.MovieRepository
 import kotlinx.coroutines.launch
 
@@ -24,6 +26,14 @@ class MovieDetailViewModel : ViewModel(){
             var result = movieRepository.getMovieDetail(movie_id)
             movieDetailResult.value = result
 
+        }
+    }
+
+    var loadVideo = MutableLiveData<Result>()
+    fun loadVideo(movie_id: Int){
+        viewModelScope.launch {
+            var result = movieRepository.getVideo(movie_id)
+            loadVideo.value = result
         }
     }
 }

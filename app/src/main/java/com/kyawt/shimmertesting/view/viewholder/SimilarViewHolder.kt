@@ -6,14 +6,13 @@ import com.bumptech.glide.Glide
 import com.kyawt.shimmertesting.service.model.movie.MovieResult
 import com.kyawt.shimmertesting.view.constant.Constant
 import kotlinx.android.synthetic.main.item_movie.view.*
-import kotlinx.android.synthetic.main.item_top.view.*
 
-class TopImageViewHolder(var v:View) : RecyclerView.ViewHolder(v) {
-    fun bind(top : MovieResult){
-        val baseUrl = Constant.MOVIE_PATH
-        val imgPath =top.posterPath
+class SimilarViewHolder(var v: View): RecyclerView.ViewHolder(v) {
+    fun bind(similar : MovieResult){
+        val baseURL = Constant.MOVIE_PATH
+        val imgPath = similar.posterPath
         Glide.with(v)
-            .load("$baseUrl$imgPath")
-            .into(v.imgTop)
+            .load("$baseURL$imgPath")
+            .into(v.moviePoster)
     }
 }

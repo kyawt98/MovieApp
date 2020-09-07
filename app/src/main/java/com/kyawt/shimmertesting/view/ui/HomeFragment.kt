@@ -62,12 +62,11 @@ class HomeFragment : Fragment(), PopularViewHolder.ClickListener {
         Handler().postDelayed({
             shimmerLayout.unVeil()
         }, 3000)
-
+        setupRecyclers()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclers()
         popularViewModel.loadData()
         nowPlayingViewModel.loadData()
         latestViewModel.loadData()
