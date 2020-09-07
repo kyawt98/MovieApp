@@ -28,5 +28,9 @@
         android:id="@+id/movieDetailFragment"
         android:name="com.kyawt.shimmertesting.view.ui.MovieDetailFragment"
         android:label="fragment_movie_detail"
-        tools:layout="@layout/fragment_movie_detail" />
+        tools:layout="@layout/fragment_movie_detail" >
+        <action
+            android:id="@+id/action_movieDetailFragment_self"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
 </navigation>

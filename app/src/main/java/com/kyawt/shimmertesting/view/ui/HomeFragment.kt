@@ -165,6 +165,4 @@ class HomeFragment : Fragment(), PopularViewHolder.ClickListener {
             .setPopEnterAnim(R.anim.nav_default_pop_enter_anim)
             .setPopExitAnim(R.anim.nav_default_pop_exit_anim)
             .build()
-
-
 }
