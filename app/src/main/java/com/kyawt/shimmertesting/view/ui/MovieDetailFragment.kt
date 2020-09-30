@@ -162,7 +162,7 @@ class MovieDetailFragment : Fragment(), SimilarViewHolder.OnClickListener {
 
     private fun onBackPressed() {
         imgBack.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(R.id.action_movieDetailFragment_to_homeFragment,null,navOptions)
         }
     }
 

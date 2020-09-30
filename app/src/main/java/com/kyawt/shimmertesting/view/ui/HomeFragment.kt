@@ -66,7 +66,7 @@ class HomeFragment : Fragment(), PopularViewHolder.ClickListener,
         // delay-auto-unveil
         Handler().postDelayed({
             shimmerLayout.unVeil()
-        }, 3000)
+        }, 5000)
         setupRecyclers()
     }
 
