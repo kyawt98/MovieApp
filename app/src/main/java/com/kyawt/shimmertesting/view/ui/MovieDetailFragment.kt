@@ -100,17 +100,17 @@ class MovieDetailFragment : Fragment(), SimilarViewHolder.OnClickListener {
                 .into(imgMovie)
 
             txtMovieTitle.text = it.title
-            if (!it.genres[0].name.equals(null)) {
+            if (it.genres[0].name.isNotEmpty()) {
                 txtMovieType.text = it.genres[0].name
             } else {
                 txtMovieType.visibility = View.GONE
             }
 //
-//            if (!it.genres[1].name.equals(null)){
-//                txtMovieTypeTwo.text = it.genres[1].name
-//            }else {
-//                txtMovieTypeTwo.visibility = View.GONE
-//            }
+            if (it.genres[1].name.isNotEmpty()){
+                txtMovieTypeTwo.text = it.genres[1].name
+            }else {
+                txtMovieTypeTwo.visibility = View.GONE
+            }
 
             txtYearValue.text = it.releaseDate
             if (it.productionCompanies.isNotEmpty()) {

@@ -1,5 +1,6 @@
 package com.kyawt.shimmertesting.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,8 +15,12 @@ class SimilarViewModel : ViewModel(){
     var movieRepository = MovieRepository()
     fun loadData(movie_id : Int){
         viewModelScope.launch {
-            var result = movieRepository.getSimilarMovie(movie_id)
-            similarMovieResult.value = result
+            try {
+                var result = movieRepository.getSimilarMovie(movie_id)
+                similarMovieResult.value = result
+            }catch (e:Exception){
+                Log.d("Similar", e.toString())
+            }
         }
     }
 }

@@ -30,10 +30,10 @@ class MovieDetailViewModel : ViewModel(){
     }
 
     var loadVideo = MutableLiveData<Result>()
-    fun loadVideo(movie_id: Int){
-        viewModelScope.launch {
-            var result = movieRepository.getVideo(movie_id)
-            loadVideo.value = result
-        }
-    }
+//    fun loadVideo(movie_id: Int){
+//        viewModelScope.launch {
+//            var result = movieRepository.getVideo(movie_id)
+//            loadVideo.value = result
+//        }
+//    }
 }

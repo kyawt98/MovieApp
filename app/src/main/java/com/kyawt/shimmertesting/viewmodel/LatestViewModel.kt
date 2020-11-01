@@ -1,5 +1,6 @@
 package com.kyawt.shimmertesting.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,8 +15,12 @@ class LatestViewModel : ViewModel() {
 
     fun loadData(){
         viewModelScope.launch {
-            var result = movieRepository.getLatest()
-            latestResult.value = result
+            try {
+                var result = movieRepository.getLatest()
+                latestResult.value = result
+            }catch (e:Exception){
+                Log.d("Latest", e.toString())
+            }
         }
     }
 }

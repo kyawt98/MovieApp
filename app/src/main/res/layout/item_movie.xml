@@ -20,7 +20,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/ic_launcher_background"
-            android:background="@android:color/darker_gray"
             android:scaleType="centerCrop"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             app:layout_constraintTop_toTopOf="parent"

@@ -61,13 +61,14 @@ class HomeFragment : Fragment(), PopularViewHolder.ClickListener,
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        shimmerLayout.shimmer = ShimmerUtils.getGrayShimmer(context!!)
-
-        // delay-auto-unveil
-        Handler().postDelayed({
-            shimmerLayout.unVeil()
-        }, 5000)
+//        shimmerLayout.shimmer = ShimmerUtils.getGrayShimmer(context!!)
+//
+//        // delay-auto-unveil
+//        Handler().postDelayed({
+//            shimmerLayout.unVeil()
+//        }, 5000)
         setupRecyclers()
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -82,6 +83,7 @@ class HomeFragment : Fragment(), PopularViewHolder.ClickListener,
     }
 
     private fun setupRecyclers() {
+        LoadingBar.visibility = View.GONE
         recyclerPopular.apply {
             viewManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             popularAdapter = PopularAdapter(this@HomeFragment)
